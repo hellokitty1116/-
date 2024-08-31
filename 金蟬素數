@@ -1,0 +1,70 @@
+專家研究發現：這些數是由1，3，5，7，9 這5 個奇數字排列組成的5 位素數，
+且同時去掉它的最高位與最低位數字後的三位數還是素數，同時去掉它的高二位與低二位數字後的一位數還是素數。
+因此，人們把這些神秘的素數稱為金蟬素數，喻意金蟬脫殼之後仍為美麗的金蟬
+
+package example.demo;
+
+public class Text {
+
+    public static void main(String[] args) {
+        int[] a = new int[5];
+
+        for (int i = 13579; i <= 97531; i += 2) {
+            if (isPrime(i)) {
+                // 分解數字
+                a[0] = i / 10000;       // 最高位
+                a[1] = (i / 1000) % 10; // 第二位
+                a[2] = (i / 100) % 10;  // 第三位
+                a[3] = (i / 10) % 10;   // 第四位
+                a[4] = i % 10;          // 最低位
+
+                // 檢查是否所有數字都是奇數
+                if (areAllDigitsOdd(a) && areDigitsUnique(a)) {
+                    // 檢查中間三位是否為質數
+                    int middleThree = a[1] * 100 + a[2] * 10 + a[3];
+                    if (isPrime(middleThree)) {
+                        // 檢查去掉高二位與低二位數字後的一位數是否為質數
+                        if (isPrime(a[2])) {
+                            System.out.println(i);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // 檢查是否為質數
+    public static boolean isPrime(int number) {
+        if (number <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // 檢查數字是否全是奇數
+    public static boolean areAllDigitsOdd(int[] digits) {
+        for (int digit : digits) {
+            if (digit % 2 == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // 檢查數字是否唯一
+    public static boolean areDigitsUnique(int[] digits) {
+        for (int i = 0; i < digits.length; i++) {
+            for (int j = i + 1; j < digits.length; j++) {
+                if (digits[i] == digits[j]) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+}
