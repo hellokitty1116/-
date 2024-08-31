@@ -1,6 +1,6 @@
-<h1>Java輸入一個數字，判斷該數字是否為質數<h1>
+Java輸入一個數字，判斷該數字是否為質數
 
-<h2>方法一 :<h2>
+方法一 :
 
 import java.util.Scanner;
 
@@ -29,4 +29,34 @@ public class Text {
 	}
 
 }
-<hr>
+
+
+方法二:
+
+public class Text {
+	
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("請輸入一個數字");
+		int number = scan.nextInt();
+		int i;
+		boolean isFind=false;
+		
+		for(i = 2; i < number; i++) {
+			if(number % i == 0) {
+				isFind=true;
+				break;
+			}
+		}
+		
+		if(isFind) { 
+			System.out.println(number + " 不是質數");
+		} else {
+			System.out.println(number + " 是質數");
+		}
+		
+		scan.close(); 
+	}
+
+}
+
