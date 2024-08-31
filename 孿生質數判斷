@@ -1,0 +1,34 @@
+在質數中，若兩個質數之差為2,我們稱之為孿生質數,
+例如（3、5）（5、7），輸入2個正整數，
+判斷他是不是孿生質數，輸出YES或者NO。
+
+
+public class Text {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		int x1 = input.nextInt();
+		int x2 = input.nextInt();
+		if ((ifPrimeNumber(x1) && ifPrimeNumber(x2)) && (x1 - x2 == 2 || x2 - x1 == 2)) {
+			System.out.println("YES");
+		} else {
+			System.out.println("NO");
+		}
+		input.close();
+	}
+	
+	//先檢查該數字是否為質數
+	public static boolean ifPrimeNumber(int number) {
+		if (number == 1 || number == 0) {
+			return false;
+			// 0 和 1 不是質數
+		}
+		for (int i = 2; i < number; i++) {
+			if (number % i == 0) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+}
