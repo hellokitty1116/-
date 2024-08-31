@@ -1,4 +1,6 @@
-Java輸入一個數字，判斷該數字是否為質數
+<h1>Java輸入一個數字，判斷該數字是否為質數<h1>
+
+<h2>方法一 :<h2>
 
 import java.util.Scanner;
 
@@ -27,3 +29,4 @@ public class Text {
 	}
 
 }
+<hr>
