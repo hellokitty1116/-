@@ -1,0 +1,45 @@
+可逆素數（或反素數）是一種特殊的質數，不僅本身是質數，將其數字「反過來」形成的新數字也是質數。例如：
+
+13 是質數，將 13 反轉成 31，31 也是質數，因此 13 是可逆素數。
+149 是質數，反轉成 941，941 也是質數，因此 149 也是可逆素數。
+
+
+public class Text {
+
+	 public static void main(String[] args) {
+	        Scanner scanner = new Scanner(System.in);
+	        System.out.println("請輸入一個數字: ");
+	        int number = scanner.nextInt();
+	        
+	        if (isPrime(number) && isPrime(reverseNumber(number))) {
+	            System.out.println(number + " 是可逆素數");
+	        } else {
+	            System.out.println(number + " 不是可逆素數");
+	        }
+	        scanner.close();
+	    }
+
+	    // 檢查是否為質數
+	    public static boolean isPrime(int number) {
+	        if (number <= 1) {
+	            return false;
+	        }
+	        for (int i = 2; i <= Math.sqrt(number); i++) {
+	            if (number % i == 0) {
+	                return false;
+	            }
+	        }
+	        return true;
+	    }
+
+	    // 將數字反轉
+	    public static int reverseNumber(int number) {
+	        int reversed = 0;
+	        while (number != 0) {
+	            int digit = number % 10;
+	            reversed = reversed * 10 + digit;
+	            number /= 10;
+	        }
+	        return reversed;
+	    }
+}
